@@ -1,13 +1,23 @@
 ---
 interface Props {
   id: string,
-  name: string,
   img: string,
+  success: boolean,
+  flightNumber: number
 }
 
-const { img, id, name } = Astro.props
+const { img, id, flightNumber } = Astro.props
 ---
-<article>
-  <img src={img}/>
-  <h2>{name}</h2>
-</article>
+<a
+  href={`/launch/${id}`}
+  class="rounded-lg border shadow-md bg-gray-800 border-gray-700 hover:scale-105 hover:bg-gray-700 hover:border-gray-500 transition flex flex-col"
+>
+  <picture class="flex justify-center p-4">
+    <img class="mb-5 rounded-lg" src={img} alt="" />
+  </picture>
+
+  <header class="p-4 flex-grow">
+    <span class={`text-xs font-semibold mr-2 px-2.5 py-0.5 rounded`}>POr hacer</span>
+    <h2 class="my-2 text-2xl font-bold tracking-tight text-white">Flight #{flightNumber}</h2>
+  </header>
+</a>
